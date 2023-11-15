@@ -1,8 +1,6 @@
 package com.global.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +24,8 @@ import lombok.RequiredArgsConstructor;
 public class UserService implements UserDetailsService {
 
 	private final UserRepo userRepo;
+
+	private  final RoleService roleService;
 	
 	private final PasswordEncoder passwordEncoder;
 	
@@ -47,9 +47,24 @@ public class UserService implements UserDetailsService {
 	}
     
     public AppUser save(AppUser entity) {
-    	AppUser appUser =new AppUser();
-    	appUser.setEmail(entity.getEmail());
-    	 appUser.setPassword(passwordEncoder.encode(entity.getPassword()));
+
+		if(!userRepo.findByEmail(entity.getEmail()).isEmpty())
+		{
+			throw new CustomException("This Email is already exists");
+		}
+		AppUser appUser =new AppUser();
+		appUser.setEmail(entity.getEmail());
+		appUser.setPassword(passwordEncoder.encode(entity.getPassword()));
+		// Get the customer role entity by name
+		Role userRole = roleService.findByName("ROLE_USER");
+		// Make sure the role exists
+		if (userRole == null) {
+			throw new RuntimeException("ROLE_USER not found in database!");
+		}
+		// Add the role to the customer's set of roles
+		Set<Role> roles = new HashSet<>();
+		roles.add(userRole);
+		appUser.setRoles(roles);
 		return userRepo.save(appUser);
 	}
 

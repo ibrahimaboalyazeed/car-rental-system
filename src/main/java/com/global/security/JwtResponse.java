@@ -16,11 +16,10 @@ public class JwtResponse {
 	
 	
 
-	public JwtResponse(String token, String email, String username, Set<Role> roles, String status) {
+	public JwtResponse(String token, String email, Set<Role> roles, String status) {
 		super();
 		this.token = token;
 		this.email = email;
-		this.username = username;
 		this.roles = roles;
 		this.status = status;
 	}
@@ -55,13 +54,6 @@ public class JwtResponse {
 		this.status = status;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public Set<Role> getRoles() {
 		return roles;

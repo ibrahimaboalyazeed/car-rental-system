@@ -45,7 +45,6 @@ public class AppUserDetail implements UserDetails {
 	public AppUserDetail(AppUser user) {
 		super();
 		this.id= user.getId();
-		this.fullName =user.getFullName();
 		this.userName= user.getEmail();
 		this.password= user.getPassword();
 		this.isEnabled = user.isEnabled();

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.global</groupId>
-	<artifactId>spring-security-demo</artifactId>
+	<artifactId>car-rental-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-security-demo</name>
+	<name>car-rental-system</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
