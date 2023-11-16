@@ -15,6 +15,7 @@ public class AppStartup implements CommandLineRunner {
 
     private final RoleService roleService;
 
+
     @Override
     public void run(String... args) throws Exception {
 

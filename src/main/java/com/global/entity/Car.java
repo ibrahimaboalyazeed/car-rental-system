@@ -2,10 +2,12 @@ package com.global.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.global.entity.enums.Transmission;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,8 +35,10 @@ public class Car {
     @Column(name = "color")
     private String color;
 
-    @Column(name = "transmission")
-    private String transmission;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transmission",columnDefinition = " ENUM('ACTIVE', 'INACTIVE', 'PENDING')")
+    private Transmission transmission;
 
     @Column(name = "seats")
     private int seats;
