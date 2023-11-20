@@ -21,7 +21,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "full_name")
     private String fullName;
@@ -30,6 +30,14 @@ public class Client {
     @Pattern(regexp = "\\d{10}")
     private String phoneNumber;
 
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private  String country;
 
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id",unique = true)

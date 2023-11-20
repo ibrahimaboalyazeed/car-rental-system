@@ -72,4 +72,9 @@ public class AppUser {
 		this.isAccountNonExpired = true;
 	}
 
+	public void addRole(Role role) {
+
+		roles.add(role);
+	}
+
 }

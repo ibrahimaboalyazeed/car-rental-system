@@ -21,7 +21,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "make")
     private String make;
@@ -29,22 +29,25 @@ public class Car {
     @Column(name = "model")
     private  String model;
 
-    @Column(name = "year")
-    private int year ;
+    @Column(name = "model_year")
+    private int modelYear ;
 
     @Column(name = "color")
     private String color;
 
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "transmission",columnDefinition = " ENUM('ACTIVE', 'INACTIVE', 'PENDING')")
-    private Transmission transmission;
-
-    @Column(name = "seats")
-    private int seats;
-
     @Column(name = "doors")
     private int doors;
+
+    @Column(name = "number_of_large_bags")
+    private int largeBag;
+
+    @Column(name = "number_of_small_bags")
+    private int smallBag;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transmission",columnDefinition = "ENUM('Automatic', 'Manual')")
+    private Transmission transmission;
+
 
     @Column(name = "licence")
     private String licence;
@@ -57,6 +60,10 @@ public class Car {
 
     @Column(name = "price_per_day")
     private int pricePerDay;
+
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private CarCategory carCategory;
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.REMOVE)

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -21,7 +23,7 @@ public class CarOwner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -32,8 +34,14 @@ public class CarOwner {
     @Column(name = "driving_licence")
     private String drivingLicence;
 
-    @Column(name = "contact_number")
-    private String contactNumber;
+    @Column(name = "phone_number")
+    @Pattern(regexp = "\\d{10}")
+    private String phoneNumber;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_id",unique = true)
+    @NotNull(message = "app user is mandatory")
+    private AppUser user;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "carOwner")

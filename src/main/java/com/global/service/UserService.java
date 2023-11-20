@@ -40,6 +40,11 @@ public class UserService implements UserDetailsService {
 		
 		return userRepo.findAll();
 	}
+
+	public List<AppUser> saveAll (List<AppUser> appUsers){
+
+		return userRepo.saveAll(appUsers);
+	}
 	
     public AppUser findById (Long id){
 		
