@@ -48,14 +48,14 @@ public class UserService implements UserDetailsService {
 	
     public AppUser findById (Long id){
 		
-		return userRepo.findById(id).orElse(null);
+		return userRepo.findById(id).orElseThrow(()-> new CustomException("This id is not found"));
 	}
     
     public AppUser save(AppUser entity) {
 
 		if(!userRepo.findByEmail(entity.getEmail()).isEmpty())
 		{
-			throw new CustomException("This Email is already exists");
+			throw new CustomException("this email already exists");
 		}
 		AppUser appUser =new AppUser();
 		appUser.setEmail(entity.getEmail());

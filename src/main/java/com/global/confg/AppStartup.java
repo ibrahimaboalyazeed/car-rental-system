@@ -21,11 +21,11 @@ public class AppStartup implements CommandLineRunner {
 
     private final ClientService clientService;
 
-    private final CarOwnerService carOwnerService;
+    private final OwnerService ownerService;
 
     private  final PasswordEncoder passwordEncoder;
 
-    private final CarCategoryService carCategoryService;
+    private final CategoryService categoryService;
 
     private final CarService carService;
 
@@ -183,59 +183,59 @@ public class AppStartup implements CommandLineRunner {
 
         }
 
-        if (carOwnerService.findAll().isEmpty()) {
+        if (ownerService.findAll().isEmpty()) {
 
 
             // Create some owners
-            CarOwner carOwner1 = new CarOwner();
-            carOwner1.setName("kareem mohamed");
-            carOwner1.setAge(25);
-            carOwner1.setPhoneNumber("1394567825");
-            carOwner1.setDrivingLicence("1259637852");
-            carOwner1.setUser(userService.findById(4L));
+            Owner Owner1 = new Owner();
+            Owner1.setName("kareem mohamed");
+            Owner1.setAge(25);
+            Owner1.setPhoneNumber("1394567825");
+            Owner1.setDrivingLicence("1259637852");
+            Owner1.setAppUser(userService.findById(4L));
 
-            CarOwner carOwner2 = new CarOwner();
-            carOwner2.setName("saad mahmoud");
-            carOwner2.setAge(50);
-            carOwner2.setPhoneNumber("1394568964");
-            carOwner2.setDrivingLicence("1493281458");
-            carOwner2.setUser(userService.findById(5L));
+            Owner Owner2 = new Owner();
+            Owner2.setName("saad mahmoud");
+            Owner2.setAge(50);
+            Owner2.setPhoneNumber("1394568964");
+            Owner2.setDrivingLicence("1493281458");
+            Owner2.setAppUser(userService.findById(5L));
 
-            CarOwner carOwner3 = new CarOwner();
-            carOwner3.setName("basem omar");
-            carOwner3.setAge(38);
-            carOwner3.setPhoneNumber("1871593576");
-            carOwner3.setDrivingLicence("75527839965");
-            carOwner3.setUser(userService.findById(6L));
+            Owner Owner3 = new Owner();
+            Owner3.setName("basem omar");
+            Owner3.setAge(38);
+            Owner3.setPhoneNumber("1871593576");
+            Owner3.setDrivingLicence("75527839965");
+            Owner3.setAppUser(userService.findById(6L));
 
-            carOwnerService.saveAll(Arrays.asList(carOwner1, carOwner2, carOwner3));
+            ownerService.saveAll(Arrays.asList(Owner1, Owner2, Owner3));
 
 
         }
-        if (carCategoryService.findAllCategories().isEmpty()) {
+        if (categoryService.findAllCategories().isEmpty()) {
 
 
             // Create some car categories
-            CarCategory carCategory1 = new CarCategory();
-            carCategory1.setCategory("Medium car");
+            Category Category1 = new Category();
+            Category1.setCategory("Medium car");
 
-            CarCategory carCategory2 = new CarCategory();
-            carCategory2.setCategory("Small car");
+            Category Category2 = new Category();
+            Category2.setCategory("Small car");
 
-            CarCategory carCategory3 = new CarCategory();
-            carCategory3.setCategory("Large car");
+            Category Category3 = new Category();
+            Category3.setCategory("Large car");
 
-            CarCategory carCategory4 = new CarCategory();
-            carCategory4.setCategory("SUVs");
+            Category Category4 = new Category();
+            Category4.setCategory("SUVs");
 
-            CarCategory carCategory5 = new CarCategory();
-            carCategory5.setCategory("People Carrier");
+            Category Category5 = new Category();
+            Category5.setCategory("People Carrier");
 
-            CarCategory carCategory6 = new CarCategory();
-            carCategory6.setCategory("Premium car");
+            Category Category6 = new Category();
+            Category6.setCategory("Premium car");
 
-            carCategoryService.saveAll(Arrays.asList(carCategory1, carCategory2, carCategory3
-                                                    , carCategory4, carCategory5, carCategory6));
+            categoryService.saveAll(Arrays.asList(Category1, Category2, Category3
+                                                    , Category4, Category5, Category6));
 
         }
 
@@ -246,8 +246,8 @@ public class AppStartup implements CommandLineRunner {
             car1.setMake("Nissan");
             car1.setModel("Sunny");
             car1.setModelYear(2020);
-            car1.setCarCategory(carCategoryService.findByCategoryName("Medium car"));
-            car1.setCarOwner(carOwnerService.findById(1L));
+            car1.setCategory(categoryService.findByCategoryName("Medium car"));
+            car1.setOwner(ownerService.findById(1L));
             car1.setColor("black");
             car1.setDoors(4);
             car1.setAvailable(true);
@@ -263,8 +263,8 @@ public class AppStartup implements CommandLineRunner {
             car2.setMake("Kia");
             car2.setModel("Sportage");
             car2.setModelYear(2022);
-            car2.setCarCategory(carCategoryService.findByCategoryName("Medium car"));
-            car2.setCarOwner(carOwnerService.findById(2L));
+            car2.setCategory(categoryService.findByCategoryName("Medium car"));
+            car2.setOwner(ownerService.findById(2L));
             car2.setColor("red");
             car2.setDoors(4);
             car2.setAvailable(true);
@@ -280,8 +280,8 @@ public class AppStartup implements CommandLineRunner {
             car3.setMake("Mercedes");
             car3.setModel("Glc");
             car3.setModelYear(2020);
-            car3.setCarCategory(carCategoryService.findByCategoryName("Premium car"));
-            car3.setCarOwner(carOwnerService.findById(3L));
+            car3.setCategory(categoryService.findByCategoryName("Premium car"));
+            car3.setOwner(ownerService.findById(3L));
             car3.setColor("white");
             car3.setDoors(4);
             car3.setAvailable(false);

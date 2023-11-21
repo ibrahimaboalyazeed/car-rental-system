@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,12 +15,12 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
-@Table(name = "car_owner")
+@Table(name = "owners")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarOwner {
+public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,10 +43,11 @@ public class CarOwner {
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id",unique = true)
     @NotNull(message = "app user is mandatory")
-    private AppUser user;
+    private AppUser appUser;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "carOwner")
+    @OneToMany(mappedBy = "owner")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Car> car ;
 
 }

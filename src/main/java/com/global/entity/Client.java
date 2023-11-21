@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "client")
+@Table(name = "clients")
 @Setter
 @Getter
 @NoArgsConstructor

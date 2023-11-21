@@ -3,17 +3,14 @@ package com.global.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.global.entity.enums.Transmission;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car")
+@Table(name = "cars")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -66,12 +63,12 @@ public class Car {
     @OneToOne
     @JoinColumn(name = "category_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private CarCategory carCategory;
+    private Category category;
 
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "owner_id")
-    private CarOwner carOwner;
+    private Owner owner;
 
 
 }
