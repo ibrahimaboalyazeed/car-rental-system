@@ -212,7 +212,7 @@ public class AppStartup implements CommandLineRunner {
 
 
         }
-        if (carCategoryService.findAll().isEmpty()) {
+        if (carCategoryService.findAllCategories().isEmpty()) {
 
 
             // Create some car categories
@@ -247,7 +247,7 @@ public class AppStartup implements CommandLineRunner {
             car1.setMake("Nissan");
             car1.setModel("Sunny");
             car1.setModelYear(2020);
-            car1.setCarCategory(carCategoryService.findByCategory("Medium car"));
+            car1.setCarCategory(carCategoryService.findByCategoryName("Medium car"));
             car1.setCarOwner(carOwnerService.findById(1L));
             car1.setColor("black");
             car1.setDoors(4);
@@ -264,7 +264,7 @@ public class AppStartup implements CommandLineRunner {
             car2.setMake("Kia");
             car2.setModel("Sportage");
             car2.setModelYear(2022);
-            car2.setCarCategory(carCategoryService.findByCategory("Medium car"));
+            car2.setCarCategory(carCategoryService.findByCategoryName("Medium car"));
             car2.setCarOwner(carOwnerService.findById(2L));
             car2.setColor("red");
             car2.setDoors(4);
@@ -281,7 +281,7 @@ public class AppStartup implements CommandLineRunner {
             car3.setMake("Mercedes");
             car3.setModel("Glc");
             car3.setModelYear(2020);
-            car3.setCarCategory(carCategoryService.findByCategory("Premium car"));
+            car3.setCarCategory(carCategoryService.findByCategoryName("Premium car"));
             car3.setCarOwner(carOwnerService.findById(3L));
             car3.setColor("white");
             car3.setDoors(4);

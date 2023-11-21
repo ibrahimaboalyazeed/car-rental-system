@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "car_category")
@@ -20,7 +21,8 @@ public class CarCategory {
     @Column(name = "id")
     private  Long id;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name",nullable = false)
+    @NotNull
     private String category;
 
 
