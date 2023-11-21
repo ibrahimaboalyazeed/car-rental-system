@@ -4,6 +4,7 @@ import com.global.entity.CarCategory;
 import com.global.error.CustomException;
 import com.global.repository.CarCategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public class CarCategoryService {
 
 
     public List<CarCategory> findAllCategories() {
-        return carCategoryRepo.findAll();
+        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        return carCategoryRepo.findAll(sort);
     }
 
     public List<CarCategory> saveAll(List<CarCategory> categories) {
@@ -52,9 +54,12 @@ public class CarCategoryService {
     public CarCategory updateCategory(CarCategory carCategory) {
 
         CarCategory carCategory1 = findByCategoryId(carCategory.getId());
-        if(findByCategoryName(carCategory.getCategory()) != null){
-            throw  new CustomException("This category is already exists");
-        }
+       if(findByCategoryName(carCategory.getCategory()) != null){
+           if(findByCategoryName(carCategory.getCategory()).getId() != carCategory.getId())
+           {
+               throw  new CustomException("This category is already exists");
+           }
+       }
         carCategory1.setCategory(carCategory.getCategory());
         return  carCategoryRepo.save(carCategory1);
 

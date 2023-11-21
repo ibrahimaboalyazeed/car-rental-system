@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,8 +22,7 @@ public class CarCategory {
     @Column(name = "id")
     private  Long id;
 
-    @Column(name = "category_name",nullable = false)
-    @NotNull
+    @Column(name = "category_name",nullable = false,unique = true)
     private String category;
 
 

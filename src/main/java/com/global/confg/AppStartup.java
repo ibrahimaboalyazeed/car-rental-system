@@ -235,8 +235,7 @@ public class AppStartup implements CommandLineRunner {
             carCategory6.setCategory("Premium car");
 
             carCategoryService.saveAll(Arrays.asList(carCategory1, carCategory2, carCategory3
-                    , carCategory4, carCategory5, carCategory6));
-
+                                                    , carCategory4, carCategory5, carCategory6));
 
         }
 
