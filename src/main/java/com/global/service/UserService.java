@@ -48,7 +48,7 @@ public class UserService implements UserDetailsService {
 	
     public AppUser findById (Long id){
 		
-		return userRepo.findById(id).orElseThrow(()-> new CustomException("This id is not found"));
+		return userRepo.findById(id).orElseThrow(()-> new CustomException("This User id is not found"));
 	}
     
     public AppUser save(AppUser entity) {

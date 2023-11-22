@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -42,6 +44,7 @@ public class Client {
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "user_id",unique = true)
     @NotNull(message = "app user is mandatory")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AppUser user;
 
 

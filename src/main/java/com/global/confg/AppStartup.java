@@ -187,28 +187,28 @@ public class AppStartup implements CommandLineRunner {
 
 
             // Create some owners
-            Owner Owner1 = new Owner();
-            Owner1.setName("kareem mohamed");
-            Owner1.setAge(25);
-            Owner1.setPhoneNumber("1394567825");
-            Owner1.setDrivingLicence("1259637852");
-            Owner1.setAppUser(userService.findById(4L));
+            Owner owner1 = new Owner();
+            owner1.setName("kareem mohamed");
+            owner1.setAge(25);
+            owner1.setPhoneNumber("1394567825");
+            owner1.setDrivingLicence("1259637852");
+            owner1.setAppUser(userService.findById(4L));
 
-            Owner Owner2 = new Owner();
-            Owner2.setName("saad mahmoud");
-            Owner2.setAge(50);
-            Owner2.setPhoneNumber("1394568964");
-            Owner2.setDrivingLicence("1493281458");
-            Owner2.setAppUser(userService.findById(5L));
+            Owner owner2 = new Owner();
+            owner2.setName("saad mahmoud");
+            owner2.setAge(50);
+            owner2.setPhoneNumber("1394568964");
+            owner2.setDrivingLicence("1493281458");
+            owner2.setAppUser(userService.findById(5L));
 
-            Owner Owner3 = new Owner();
-            Owner3.setName("basem omar");
-            Owner3.setAge(38);
-            Owner3.setPhoneNumber("1871593576");
-            Owner3.setDrivingLicence("75527839965");
-            Owner3.setAppUser(userService.findById(6L));
+            Owner owner3 = new Owner();
+            owner3.setName("basem omar");
+            owner3.setAge(38);
+            owner3.setPhoneNumber("1871593576");
+            owner3.setDrivingLicence("75527839965");
+            owner3.setAppUser(userService.findById(6L));
 
-            ownerService.saveAll(Arrays.asList(Owner1, Owner2, Owner3));
+            ownerService.saveAll(Arrays.asList(owner1, owner2, owner3));
 
 
         }
@@ -216,26 +216,26 @@ public class AppStartup implements CommandLineRunner {
 
 
             // Create some car categories
-            Category Category1 = new Category();
-            Category1.setCategory("Medium car");
+            Category category1 = new Category();
+            category1.setName("Medium car");
 
-            Category Category2 = new Category();
-            Category2.setCategory("Small car");
+            Category category2 = new Category();
+            category2.setName("Small car");
 
-            Category Category3 = new Category();
-            Category3.setCategory("Large car");
+            Category category3 = new Category();
+            category3.setName("Large car");
 
-            Category Category4 = new Category();
-            Category4.setCategory("SUVs");
+            Category category4 = new Category();
+            category4.setName("SUVs");
 
-            Category Category5 = new Category();
-            Category5.setCategory("People Carrier");
+            Category category5 = new Category();
+            category5.setName("People Carrier");
 
-            Category Category6 = new Category();
-            Category6.setCategory("Premium car");
+            Category category6 = new Category();
+            category6.setName("Premium car");
 
-            categoryService.saveAll(Arrays.asList(Category1, Category2, Category3
-                                                    , Category4, Category5, Category6));
+            categoryService.saveAll(Arrays.asList(category1, category2, category3
+                                                    , category4, category5, category6));
 
         }
 

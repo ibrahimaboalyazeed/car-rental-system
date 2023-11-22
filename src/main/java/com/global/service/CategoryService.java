@@ -25,7 +25,7 @@ public class CategoryService {
     }
 
     public Category findByCategoryName(String category) {
-        return categoryRepo.findByCategoryIgnoreCase(category);
+        return categoryRepo.findByNameIgnoreCase(category);
     }
 
 
@@ -41,26 +41,26 @@ public class CategoryService {
         return 1;
     }
 
-    public Category createCategory(Category carCategory) {
+    public Category createCategory(Category category) {
 
-        if(findByCategoryName(carCategory.getCategory()) != null){
+        if(findByCategoryName(category.getName()) != null){
             throw  new CustomException("This category is already exists");
         }
         Category carCategory1 = new Category();
-        carCategory1.setCategory(carCategory.getCategory());
+        carCategory1.setName(category.getName());
         return  categoryRepo.save(carCategory1);
     }
 
-    public Category updateCategory(Category carCategory) {
+    public Category updateCategory(Category category) {
 
-        Category carCategory1 = findByCategoryId(carCategory.getId());
-       if(findByCategoryName(carCategory.getCategory()) != null){
-           if(findByCategoryName(carCategory.getCategory()).getId() != carCategory.getId())
+        Category carCategory1 = findByCategoryId(category.getId());
+       if(findByCategoryName(category.getName()) != null){
+           if(findByCategoryName(category.getName()).getId() != category.getId())
            {
                throw  new CustomException("This category is already exists");
            }
        }
-        carCategory1.setCategory(carCategory.getCategory());
+        carCategory1.setName(category.getName());
         return  categoryRepo.save(carCategory1);
 
 

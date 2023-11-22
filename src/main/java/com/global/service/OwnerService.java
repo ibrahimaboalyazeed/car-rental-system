@@ -23,9 +23,9 @@ public class OwnerService {
         return ownerRepo.findAll();
     }
 
-    public List<Owner> saveAll(List<Owner> carOwners) {
+    public List<Owner> saveAll(List<Owner> owners) {
 
-        return ownerRepo.saveAll(carOwners);
+        return ownerRepo.saveAll(owners);
     }
 
     public Owner findById (Long id)
@@ -47,22 +47,22 @@ public class OwnerService {
 
     }
 @Transactional
-    public Owner createOwner(Owner carOwner) {
+    public Owner createOwner(Owner owner) {
 
-        if(findOwnerByDrivingLicence(carOwner.getDrivingLicence()) != null ){
+        if(findOwnerByDrivingLicence(owner.getDrivingLicence()) != null ){
             throw new CustomException("This Owner already exists");
         }
-        Owner carOwner1 = new Owner();
-        carOwner1.setName(carOwner.getName());
-        carOwner1.setAge(carOwner.getAge());
-        carOwner1.setPhoneNumber(carOwner.getPhoneNumber());
-        carOwner1.setDrivingLicence(carOwner.getDrivingLicence());
+        Owner owner1 = new Owner();
+        owner1.setName(owner.getName());
+        owner1.setAge(owner.getAge());
+        owner1.setPhoneNumber(owner.getPhoneNumber());
+        owner1.setDrivingLicence(owner.getDrivingLicence());
 
-        AppUser appUser = userService.findById(carOwner.getAppUser().getId());
-        findOwnerByUserId(carOwner.getAppUser().getId());
-        carOwner1.setAppUser(appUser);
+        AppUser appUser = userService.findById(owner.getAppUser().getId());
+        findOwnerByUserId(owner.getAppUser().getId());
+        owner1.setAppUser(appUser);
 
-        return ownerRepo.save(carOwner1);
+        return ownerRepo.save(owner1);
 
     }
 
