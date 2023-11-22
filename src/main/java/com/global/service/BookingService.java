@@ -21,4 +21,9 @@ public class BookingService {
     public Booking findById(Long id) {
         return bookingRepo.findById(id).orElseThrow(()-> new CustomException("This Booking is not found"));
     }
+
+    public Booking addBooking(Booking booking) {
+
+        return null;
+    }
 }
