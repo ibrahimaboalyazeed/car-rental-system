@@ -5,10 +5,15 @@ import com.global.error.CustomResponse;
 import com.global.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 @RestController
 @RequestMapping("/clients")
+@Validated
 public class ClientController {
 
     @Autowired

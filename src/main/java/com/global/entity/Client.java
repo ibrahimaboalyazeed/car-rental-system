@@ -29,7 +29,7 @@ public class Client {
     private String fullName;
 
     @Column(name = "phone_number")
-    @Pattern(regexp = "\\d{10}")
+    @Pattern(regexp = "\\d{10}",message = "invalid phone number")
     private String phoneNumber;
 
     @Column(name = "street")
