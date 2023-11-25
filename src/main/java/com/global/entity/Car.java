@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cars")
@@ -29,19 +30,19 @@ public class Car {
     private  String model;
 
     @Column(name = "model_year")
-    private int modelYear ;
+    private Integer modelYear ;
 
     @Column(name = "color")
     private String color;
 
     @Column(name = "doors")
-    private int doors;
+    private Integer doors;
 
     @Column(name = "number_of_large_bags")
-    private int largeBag;
+    private Integer largeBag;
 
     @Column(name = "number_of_small_bags")
-    private int smallBag;
+    private Integer smallBag;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "transmission",columnDefinition = "ENUM('Automatic', 'Manual')")
@@ -55,10 +56,10 @@ public class Car {
     private boolean available;
 
     @Column(name = "price_per_hour")
-    private int pricePerHour;
+    private Integer pricePerHour;
 
     @Column(name = "price_per_day")
-    private int pricePerDay;
+    private Integer pricePerDay;
 
     @OneToOne
     @JoinColumn(name = "category_id")
@@ -69,6 +70,7 @@ public class Car {
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "owner_id")
     private Owner owner;
+
 
 
 }

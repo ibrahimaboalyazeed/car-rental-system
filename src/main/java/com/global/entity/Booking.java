@@ -41,17 +41,16 @@ public class Booking {
     @Column(name = "status",columnDefinition = "ENUM ('ACTIVE','INACTIVE','PENDING')")
     private Status status;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    @ManyToOne()
     @JoinColumn(name = "client_id",nullable = false)
     private Client client;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-    //@OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "location_id",nullable = false)
     private  Location Location;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-    //@OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne()
     @JoinColumn(name = "car_id",nullable = false)
-    private Car cars;
+    private Car car;
 }
