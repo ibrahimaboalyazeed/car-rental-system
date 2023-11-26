@@ -33,5 +33,4 @@ public class Location {
     @Column(name = "country")
     private  String country;
 
-
 }

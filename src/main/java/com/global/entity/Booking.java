@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import java.time.LocalDateTime;
 @Entity
 @Table(name = "Booking")
 @Setter
@@ -25,17 +24,15 @@ public class Booking {
     @Column(name ="booking_id")
     private  Long id;
 
-    @Column(name ="start_date")
-    private LocalDate startDate;
+    @Column(name ="start_date_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime startDateTime;
 
-    @Column(name ="start_time")
-    private LocalTime startTime;
+    @Column(name ="end_date_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime endDateTime;
 
-    @Column(name ="end_date")
-    private LocalDate endDate;
 
-    @Column(name ="end_time")
-    private LocalTime endTime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status",columnDefinition = "ENUM ('ACTIVE','INACTIVE','PENDING')")

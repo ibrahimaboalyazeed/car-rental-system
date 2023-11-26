@@ -1,18 +1,13 @@
 package com.global.service;
 
 import com.global.entity.*;
-import com.global.entity.enums.Transmission;
 import com.global.error.CustomException;
 import com.global.repository.BookingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class BookingService {
@@ -41,9 +36,9 @@ public class BookingService {
 
     public Booking addBooking(Booking booking) {
 
-        validateBookingStartDateAndTime(booking.getStartDate(), booking.getStartTime(), booking.getEndDate());
+        validateBookingStartDateAndTime(booking.getStartDateTime(),booking.getEndDateTime());
         Car car = carService.findById(booking.getCar().getId());
-        //checkCarAvailability(car.getId(), booking.getStartDate(), booking.getEndDate());
+        checkCarAvailability(car.getId(), booking.getStartDateTime(), booking.getEndDateTime());
         Client client = clientService.findById(booking.getClient().getId());
 
         Location location = new Location();
@@ -53,10 +48,8 @@ public class BookingService {
         location.setStreet(booking.getLocation().getStreet());
 
         Booking bookingToInsert = new Booking();
-        bookingToInsert.setStartTime(booking.getStartTime());
-        bookingToInsert.setStartDate(booking.getStartDate());
-        bookingToInsert.setEndTime(booking.getEndTime());
-        bookingToInsert.setEndDate(booking.getEndDate());
+        bookingToInsert.setStartDateTime(booking.getStartDateTime());
+        bookingToInsert.setEndDateTime(booking.getEndDateTime());
         bookingToInsert.setCar(car);
         bookingToInsert.setClient(client);
         bookingToInsert.setLocation(location);
@@ -65,23 +58,23 @@ public class BookingService {
 
     }
 
-    public void validateBookingStartDateAndTime(LocalDate startDate, LocalTime startTime, LocalDate endDate) {
-        if (startDate.isBefore(LocalDate.now())
-                || (startDate.isEqual(LocalDate.now()) && startTime.isBefore(LocalTime.now()))) {
+    public void validateBookingStartDateAndTime(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        if (startDateTime.isBefore(LocalDateTime.now()))
+        {
             throw new CustomException("Booking date cannot be in the past.");
         }
-        if (endDate.isBefore(LocalDate.now())) {
+        if (endDateTime.isBefore(LocalDateTime.now())) {
             throw new CustomException("End date can not be in the past");
         }
-        if (endDate.isBefore(startDate)) {
+        if (endDateTime.isBefore(startDateTime)) {
             throw new CustomException("End date must be after start date");
         }
 
     }
 
-    public boolean checkCarAvailability(Long carId, LocalDate startDate, LocalDate endDate) {
+    public boolean checkCarAvailability(Long carId, LocalDateTime startDateTime, LocalDateTime endDateTime) {
 
-        if (bookingRepo.findByCarIdAndStartDateAndEndDate(carId, startDate, endDate).isEmpty()) {
+        if (bookingRepo.checkCarAvailability(carId, startDateTime, endDateTime).isEmpty()) {
             return true;
         }
         throw new CustomException("the car is already reserved");
@@ -94,17 +87,10 @@ public class BookingService {
     }
 
 
-    public List<Car> findAvailableCars(LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime) {
+    public List<Car> findAvailableCars(LocalDateTime startDateTime,LocalDateTime endDateTime) {
 
-        validateBookingStartDateAndTime(startDate, startTime, endDate);
-        //System.out.println("555555555555555555555555555555555555555555555555"+startDate);
-        //System.out.println("6666666666666666666666666666666666666666666666666"+endDate);
-        List<Car> cars = bookingRepo.findAvailableCarsBetweenStartAndEnd(startDate, endDate);
-        List<Car>  cars1 = bookingRepo.findAvailableCarsINStart(endDate,endTime);
-        List<Car>  cars2 = bookingRepo.findAvailableCarsINEnd(startDate,startTime);
-        cars.addAll(cars1);
-        cars.addAll(cars2);
-
+        validateBookingStartDateAndTime(startDateTime, endDateTime);
+        List<Car> cars = bookingRepo.findAvailableCarsBetweenStartAndEnd(startDateTime, endDateTime);
         return cars;
     }
 }

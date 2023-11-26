@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/booking")
@@ -39,11 +37,10 @@ public class BookingController {
         return ResponseEntity.ok(new CustomResponse(bookingService.deleteById(id)));
     }
     @GetMapping("/available-cars")
-    public ResponseEntity<?> findAvailableCars(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate ,
-                                               @RequestParam @DateTimeFormat(pattern = "HH:mm:ss") LocalTime startTime,
-                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ,
-                                               @RequestParam @DateTimeFormat(pattern = "HH:mm:ss") LocalTime endTime )
+    public ResponseEntity<?> findAvailableCars(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime startDateTime ,
+                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime endDateTime )
     {
-        return ResponseEntity.ok(new CustomResponse(bookingService.findAvailableCars(startDate,startTime,endDate,endTime)));
+        return ResponseEntity.ok(new CustomResponse(bookingService.findAvailableCars(startDateTime,endDateTime)));
     }
+
 }
