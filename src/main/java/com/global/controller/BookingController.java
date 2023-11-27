@@ -16,11 +16,11 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-     @GetMapping("/all")
+    @GetMapping("/all")
     public ResponseEntity<?> findAll()
-     {
-         return ResponseEntity.ok(new CustomResponse(bookingService.findAll()));
-     }
+    {
+        return ResponseEntity.ok(new CustomResponse(bookingService.findAll()));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id)
     {
@@ -28,7 +28,7 @@ public class BookingController {
     }
     @PostMapping("/add")
     public ResponseEntity<?> addBooking(@RequestBody Booking booking){
-         return ResponseEntity.ok(new CustomResponse(bookingService.addBooking(booking)));
+        return ResponseEntity.ok(new CustomResponse(bookingService.addBooking(booking)));
     }
 
     @DeleteMapping ("/{id}")
