@@ -13,11 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.global.entity.AppUser;
 import com.global.error.CustomException;
@@ -34,6 +30,7 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @Log4j2
 @RequestMapping("/api/v1/auth")
+@CrossOrigin
 public class AuthController {
 
 
@@ -45,7 +42,7 @@ public class AuthController {
 
 	@Autowired
 	private JwtTokenUtils tokenUtiles;
-
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping("/login")
 	public Object login(@RequestBody Map<String, Object> body) {
 
@@ -82,7 +79,7 @@ public class AuthController {
 		return new CustomResponse("INVALID", HttpStatus.BAD_REQUEST.value());
 	}
 
-
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping("/signup")
 	public Object signup(@RequestBody AppUser user) {
 

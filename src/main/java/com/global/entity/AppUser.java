@@ -13,8 +13,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Value;
 
 
@@ -34,9 +37,10 @@ public class AppUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
-	
+
+	@NotNull
 	private String email;
-	
+	@NotNull
 	private String password ;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -44,6 +48,7 @@ public class AppUser {
 	    joinColumns = @JoinColumn(name = "user_id"),
 	    inverseJoinColumns = @JoinColumn(name = "role_id"))
 	@OrderColumn(name = "id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Set<Role> roles = new HashSet<>();
 	
 	@Value("1")
