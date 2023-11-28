@@ -1,0 +1,72 @@
+.ui-droptime-wrapper {
+	overflow-y: auto;
+	max-height: 150px;
+	width: 6.5em;
+	background: #fff;
+	border: 1px solid #ddd;
+	-webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	box-shadow:0 5px 10px rgba(0,0,0,0.2);
+	outline: none;
+	z-index: 10001;
+	margin: 0;
+}
+
+.ui-droptime-wrapper.ui-droptime-with-duration {
+	width: 13em;
+}
+
+.ui-droptime-wrapper.ui-droptime-with-duration.ui-droptime-step-30,
+.ui-droptime-wrapper.ui-droptime-with-duration.ui-droptime-step-60 {
+	width: 11em;
+}
+
+.ui-droptime-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ui-droptime-duration {
+	margin-left: 5px; color: #888;
+}
+
+.ui-droptime-list:hover .ui-droptime-duration {
+	color: #888;
+}
+
+.ui-droptime-list li {
+	padding: 3px 0 3px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: #000;
+	list-style: none;
+	margin: 0;
+}
+
+.ui-droptime-list:hover .ui-droptime-selected {
+	background: #fff; color: #000;
+}
+
+li.ui-droptime-selected,
+.ui-droptime-list li:hover,
+.ui-droptime-list .ui-droptime-selected:hover {
+	background: #1980EC; color: #fff;
+}
+
+li.ui-droptime-selected .ui-droptime-duration,
+.ui-droptime-list li:hover .ui-droptime-duration {
+	color: #ccc;
+}
+
+.ui-droptime-list li.ui-droptime-disabled,
+.ui-droptime-list li.ui-droptime-disabled:hover,
+.ui-droptime-list li.ui-droptime-selected.ui-droptime-disabled {
+	color: #888;
+	cursor: default;
+}
+
+.ui-droptime-list li.ui-droptime-disabled:hover,
+.ui-droptime-list li.ui-droptime-selected.ui-droptime-disabled {
+	background: #f2f2f2;
+}

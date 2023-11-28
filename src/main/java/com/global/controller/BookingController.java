@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/booking")
+@CrossOrigin
 public class BookingController {
 
     @Autowired
@@ -36,6 +37,7 @@ public class BookingController {
     {
         return ResponseEntity.ok(new CustomResponse(bookingService.deleteById(id)));
     }
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/available-cars")
     public ResponseEntity<?> findAvailableCars(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime startDateTime ,
                                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime endDateTime )

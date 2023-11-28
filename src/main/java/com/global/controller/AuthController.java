@@ -61,7 +61,7 @@ public class AuthController {
 		catch (DisabledException dis) {
 			throw new CustomException("USER_DISABLED");
 		} catch (BadCredentialsException e) {
-			throw new CustomException("The request is rejected because the credentials are invalid");
+			throw new CustomException("Wrong email or password");
 		}
 
 		log.info("authentication >> " + authentication.isAuthenticated());
