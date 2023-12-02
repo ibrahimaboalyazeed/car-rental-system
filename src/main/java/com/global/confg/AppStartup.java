@@ -251,6 +251,7 @@ public class AppStartup implements CommandLineRunner {
             car1.setColor("black");
             car1.setDoors(4);
             car1.setAvailable(true);
+            car1.setWorkArea("cairo");
             car1.setLargeBag(3);
             car1.setSmallBag(0);
             car1.setTransmission(Transmission.Automatic);
@@ -268,6 +269,7 @@ public class AppStartup implements CommandLineRunner {
             car2.setColor("red");
             car2.setDoors(4);
             car2.setAvailable(true);
+            car2.setWorkArea("alexandria");
             car2.setLargeBag(1);
             car2.setSmallBag(1);
             car2.setTransmission(Transmission.Automatic);
@@ -285,6 +287,7 @@ public class AppStartup implements CommandLineRunner {
             car3.setColor("white");
             car3.setDoors(4);
             car3.setAvailable(false);
+            car3.setWorkArea("tanta");
             car3.setLargeBag(1);
             car3.setSmallBag(1);
             car3.setTransmission(Transmission.Manual);

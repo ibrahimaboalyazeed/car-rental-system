@@ -50,9 +50,16 @@ function getCookie(name) {
   return null;
 }
 
+<<<<<<< HEAD
 function submitForm(event) {
   event.preventDefault();
   console.log("hi");
+=======
+function bookingForm(event) {
+  event.preventDefault();
+  console.log("hi");
+  var pick_up_location = $("#pick_up_location").val();
+>>>>>>> dfead61 (Adding master js)
   var book_pick_date = $("#book_pick_date").val();
   var book_off_date = $("#book_off_date").val();
   var time_pick = $("#time_pick").val();
@@ -64,6 +71,10 @@ function submitForm(event) {
   var endDateTimeString =
     convertDate(book_off_date) + " " + convertTime(time_off);
 
+<<<<<<< HEAD
+=======
+  console.log("pick_up_location", pick_up_location);
+>>>>>>> dfead61 (Adding master js)
   console.log("Start Date Time:", startDateTimeString);
   console.log("End Date Time:", endDateTimeString);
 
@@ -122,7 +133,13 @@ function submitForm(event) {
   }
   const token = getCookie("token");
   var url =
+<<<<<<< HEAD
     "http://localhost:8080/booking/available-cars?startDateTime=" +
+=======
+    "http://localhost:8080/booking/available-cars?pickUpLocation=" +
+    pick_up_location +
+    "&startDateTime=" +
+>>>>>>> dfead61 (Adding master js)
     startDateTimeString +
     "&endDateTime=" +
     endDateTimeString;
@@ -134,12 +151,24 @@ function submitForm(event) {
     dataType: "json",
     headers: {
       Authorization: "Bearer " + token,
+<<<<<<< HEAD
+=======
+      Accept: "application/json",
+>>>>>>> dfead61 (Adding master js)
     },
     success: function (response) {
       console.log(response);
 
       if (response.status_code == 200) {
+<<<<<<< HEAD
         window.location.href = "/car.html";
+=======
+        var cars = response.details;
+        updateCarList(cars);
+        setTimeout(function () {
+          window.location.href = "/car.html";
+        }, 500);
+>>>>>>> dfead61 (Adding master js)
       } else if (response.status_code == 404) {
         // Display the error message in the error-message <div>
         $("#error-message").text(response.details[0]);
@@ -152,3 +181,67 @@ function submitForm(event) {
     },
   });
 }
+<<<<<<< HEAD
+=======
+
+function updateCarList(heroSection, cars) {
+  var carListContainer = $(".ftco-section.bg-light .container .row");
+
+  // Clear the existing content in both the car list and hero section
+  carListContainer.empty();
+  heroSection.empty();
+
+  // Construct the HTML for the hero section (assuming it remains the same for all cars)
+  var heroHtml = `
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');"
+      data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+          <div class="col-md-9 ftco-animate pb-5">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                  class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i
+                class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Choose Your Car</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+
+  // Append the hero HTML to the hero section
+  heroSection.append(heroHtml);
+
+  // Iterate through the list of cars and append them to the HTML
+  for (var i = 0; i < cars.length; i++) {
+    var car = cars[i];
+
+    // Construct the HTML for each car
+    var carHtml = `
+      <div class="col-md-4">
+        <div class="car-wrap rounded ftco-animate">
+          <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-${
+            i + 1
+          }.jpg);"></div>
+          <div class="text">
+            <h2 class="mb-0"><a href="car-single.html">${car.make} ${
+      car.model
+    }</a></h2>
+            <div class="d-flex mb-3">
+              <span class="cat">${car.category.name}</span>
+              <p class="price ml-auto">$${car.pricePerDay} <span>/day</span></p>
+            </div>
+            <p class="d-flex mb-0 d-block">
+              <a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
+              <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Append the car HTML to the car list container
+    carListContainer.append(carHtml);
+  }
+}
+>>>>>>> dfead61 (Adding master js)

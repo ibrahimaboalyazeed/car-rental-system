@@ -56,6 +56,9 @@ public class Car {
     @Column(name = "available")
     private boolean available;
 
+    @Column(name = "workArea")
+    private String workArea;
+
     @Column(name = "price_per_hour")
     private Integer pricePerHour;
 

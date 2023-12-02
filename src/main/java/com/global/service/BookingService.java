@@ -87,10 +87,11 @@ public class BookingService {
     }
 
 
-    public List<Car> findAvailableCars(LocalDateTime startDateTime,LocalDateTime endDateTime) {
+    public List<Car> findAvailableCars(String pickUpLocation,LocalDateTime startDateTime,LocalDateTime endDateTime) {
 
         validateBookingStartDateAndTime(startDateTime, endDateTime);
-        List<Car> cars = bookingRepo.findAvailableCarsBetweenStartAndEnd(startDateTime, endDateTime);
+        List<Car> cars = bookingRepo.findAvailableCarsBetweenStartAndEnd(pickUpLocation,startDateTime, endDateTime);
+        System.out.println(cars.toString());
         return cars;
     }
 }
