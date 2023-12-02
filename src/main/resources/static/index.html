@@ -86,7 +86,7 @@
         <div class="col-md-12	featured-top">
           <div class="row no-gutters">
             <div class="col-md-4 d-flex align-items-center">
-              <form action="#" class="request-form ftco-animate bg-primary" onsubmit="submitForm(event)">
+              <form class="request-form ftco-animate bg-primary" onsubmit="submitForm(event)">
                 <h2>Make your trip</h2>
                 <div class="form-group">
                   <label for="" class="label">Pick-up location</label>
@@ -584,90 +584,10 @@
 
 
 
-  <script>
-    function submitForm(event) {
-      event.preventDefault();
-      console.log("hi");
-      var book_pick_date = $("#book_pick_date").val();
-      var book_off_date = $("#book_off_date").val();
-      var time_pick = $("#time_pick").val();
-      var time_off = $("#time_off").val();
-
-      // Combine date and time strings
-      var startDateTimeString = convertDate(book_pick_date) + " " + convertTime(time_pick);
-      var endDateTimeString = convertDate(book_off_date) + " " + convertTime(time_off);
-
-      //console.log("Start Date Time:", startDateTimeString);
-     // console.log("End Date Time:", endDateTimeString);
 
 
-      // Convert date strings to the format "MM/DD/YYYY" to "YYYY-MM-DD"
-      function convertDate(dateString) {
-          var parts = dateString.split('/');
-          return parts[2] + '-' + parts[0] + '-' + parts[1];
-      }
 
-      function convertTime(timeString) {
-          var timeParts = timeString.match(/(\d+):(\d+)(\w+)/);
-
-          if (!timeParts) {
-              console.error("Invalid time format");
-              return null; // Return null for invalid inputs
-          }
-
-          var hours = parseInt(timeParts[1], 10);
-          var minutes = parseInt(timeParts[2], 10);
-          var period = timeParts[3].toLowerCase();
-
-          // Adjust hours for "pm"
-          if (period === "pm" && hours !== 12) {
-              hours += 12;
-          }
-
-          // Adjust hours for "am" at 12:00
-          if (period === "am" && hours === 12) {
-              hours = 0;
-          }
-
-          // Validate input values
-          if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-              console.error("Invalid time values");
-              return null; // Return null for invalid inputs
-          }
-
-          return hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0'); // Format as HH:mm
-      }
-
-      console.log("Start Date Time:", startDateTimeString);
-      console.log("End Date Time:", endDateTimeString);
-
-      // Send the data to the backend using AJAX
-      $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/booking/available-cars",
-        contentType: "application/json",
-        data: JSON.stringify({ startDateTime: startDateTimeString, endDateTime:endDateTimeString }),
-        dataType: "json",
-        success: function (response) {
-          console.log(response);
-
-          if (response.status_code == 200) {
-            window.location.href = "/car.html";
-          } else if (response.status_code == 404) {
-            // Display the error message in the error-message <div>
-            $("#error-message").text(response.details[0]);
-          }
-        },
-        error: function (error) {
-          console.error("Error:", error);
-          // Display a generic error message in case of AJAX failure
-          $("#error-message").text("An error occurred during login.");
-        },
-      });
-    }
-  </script>
-
-
+  <script src="js/master.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>

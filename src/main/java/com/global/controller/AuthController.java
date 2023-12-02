@@ -30,7 +30,7 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @Log4j2
 @RequestMapping("/api/v1/auth")
-@CrossOrigin
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class AuthController {
 
 
@@ -42,7 +42,6 @@ public class AuthController {
 
 	@Autowired
 	private JwtTokenUtils tokenUtiles;
-	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping("/login")
 	public Object login(@RequestBody Map<String, Object> body) {
 
@@ -79,7 +78,6 @@ public class AuthController {
 		return new CustomResponse("INVALID", HttpStatus.BAD_REQUEST.value());
 	}
 
-	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping("/signup")
 	public Object signup(@RequestBody AppUser user) {
 

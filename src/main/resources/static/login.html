@@ -49,7 +49,7 @@
           <div class="text w-100 text-center mb-md-5 pb-md-5">
             <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
             <div class="login-container">
-              <form id="loginForm" method="post" onsubmit="submitForm(event)">
+              <form id="loginForm" method="post" onsubmit="checkCredentials(event)">
                 <div class="form-group">
                   <label for="username" style="color:black;">Username:</label>
                   <input type="text" id="username" name="username" required />
@@ -60,7 +60,7 @@
                   <div id="error-message" class="error-message" style="color:black ;"></div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" onclick="submitForm()">Login</button>
+                  <button type="submit">Login</button>
                 </div>
               </form>
               <p class="signup-link">
@@ -73,40 +73,9 @@
     </div>
   </div>
 
-  <script>
-    function submitForm(event) {
-      event.preventDefault();
-      console.log("hi");
-      var username = $("#username").val();
-      var password = $("#password").val();
-      console.log(username);
 
-      // Send the data to the backend using AJAX
-      $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/api/v1/auth/login",
-        contentType: "application/json",
-        data: JSON.stringify({ email: username, password: password }),
-        dataType: "json",
-        success: function (response) {
-          console.log(response);
 
-          if (response.status_code == 200) {
-            window.location.href = "/index.html";
-          } else if (response.status_code == 404) {
-            // Display the error message in the error-message <div>
-            $("#error-message").text(response.details[0]);
-          }
-        },
-        error: function (error) {
-          console.error("Error:", error);
-          // Display a generic error message in case of AJAX failure
-          $("#error-message").text("An error occurred during login.");
-        },
-      });
-    }
-  </script>
-
+  <script src="js/master.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
