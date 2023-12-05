@@ -39,10 +39,11 @@ public class BookingController {
     }
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/available-cars")
-    public ResponseEntity<?> findAvailableCars(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime startDateTime ,
+    public ResponseEntity<?> findAvailableCars(@RequestParam String pickUpLocation,
+                                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime startDateTime ,
                                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") LocalDateTime endDateTime )
     {
-        return ResponseEntity.ok(new CustomResponse(bookingService.findAvailableCars(startDateTime,endDateTime)));
+        return ResponseEntity.ok(new CustomResponse(bookingService.findAvailableCars(pickUpLocation,startDateTime,endDateTime)));
     }
 
 }
