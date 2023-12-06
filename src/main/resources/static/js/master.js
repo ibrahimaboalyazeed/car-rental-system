@@ -50,6 +50,50 @@ function getCookie(name) {
   return null;
 }
 
+
+function signUp(event) {
+    event.preventDefault();
+    console.log("hi");
+    var email = $("#email").val();
+    var password = $("#password").val();
+    console.log(email);
+
+    // Send the data to the backend using AJAX
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/api/v1/auth/signup",
+        contentType: "application/json",
+        data: JSON.stringify({ email: email, password: password }),
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+    
+          if (response.status_code == 200) {
+            document.cookie =
+              "token=" +
+              response.details.token +
+              "; expires=Thu, 18 Dec 2023 12:00:00 UTC; path=/";
+            // Get the token value from the "token" cookie
+            const token = getCookie("token");
+    
+            // Now you can use the 'token' variable as needed
+            console.log(token);
+    
+            window.location.href = "/index.html";
+          } else if (response.status_code == 404) {
+            // Display the error message in the error-message <div>
+            $("#error-message").text(response.details[0]);
+          }
+        },
+        error: function (error) {
+          console.error("Error:", error);
+          // Display a generic error message in case of AJAX failure
+          $("#error-message").text("An error occurred during login.");
+        },
+    });
+}
+
+
 function bookingForm(event) {
   event.preventDefault();
   console.log("hi");
@@ -131,35 +175,64 @@ function bookingForm(event) {
     "&endDateTime=" +
     endDateTimeString;
 
-  // Send the data to the backend using AJAX
-  $.ajax({
+ $.ajax({
     type: "GET",
     url: url,
     dataType: "json",
     headers: {
-      Authorization: "Bearer " + token,
-      Accept: "application/json",
+        Authorization: "Bearer " + token,
+        Accept: "application/json",
     },
     success: function (response) {
-      console.log(response);
+        console.log(response);
 
-      if (response.status_code == 200) {
-        var cars = response.details;
-        //updateCarList(cars);
-        setTimeout(function () {
-          window.location.href = "/car.html";
-        }, 500);
-      } else if (response.status_code == 404) {
-        // Display the error message in the error-message <div>
-        $("#error-message").text(response.details[0]);
-      }
+        if (response.status_code == 200) {
+            var cars = response.details;
+
+            // Assuming you have an element with the ID 'car-list-container'
+            var carListContainer = $("#car-list-container");
+
+            // Clear existing content (optional, depending on your needs)
+            carListContainer.empty();
+
+            // Iterate through the cars and append them to the HTML
+            for (var i = 0; i < cars.length; i++) {
+                var car = cars[i];
+
+                // Create a new car element and append it to the container
+                var carElement = '<div class="col-md-4">';
+                carElement += '<div class="car-wrap rounded ftco-animate">';
+                carElement += '<div class="img rounded d-flex align-items-end" style="background-image: url(images/car-1.jpg);"></div>';
+                carElement += '<div class="text">';
+                carElement += '<h2 class="mb-0"><a href="car-single.html">' + car.make + ' ' + car.model + '</a></h2>';
+                carElement += '<div class="d-flex mb-3">';
+                carElement += '<span class="cat">' + car.category.name + '</span>';
+                carElement += '<p class="price ml-auto">' + car.pricePerDay + ' <span>/day</span></p>';
+                carElement += '</div>';
+                carElement += '<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>';
+                carElement += '</div>';
+                carElement += '</div>';
+                carElement += '</div>';
+
+                carListContainer.append(carElement);
+            }
+
+            // Redirect after a delay (900 milliseconds in your example)
+            setTimeout(function () {
+                window.location.href = "/car.html";
+            }, 900);
+        } else if (response.status_code == 404) {
+            // Display the error message in the error-message <div>
+            $("#error-message").text(response.details[0]);
+        }
     },
     error: function (error) {
-      console.error("Error:", error);
-      // Display a generic error message in case of AJAX failure
-      $("#error-message").text("An error occurred during login.");
+        console.error("Error:", error);
+        // Display a generic error message in case of AJAX failure
+        $("#error-message").text("An error occurred during login.");
     },
-  });
+});
+
 }
 
 // function updateCarList(heroSection, cars) {
