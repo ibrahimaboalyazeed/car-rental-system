@@ -27,6 +27,10 @@ public class ClientController {
     public ResponseEntity<?> findById(@PathVariable Long id){
         return ResponseEntity.ok(new CustomResponse(clientService.findById(id)));
     }
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> findByUserId(@PathVariable Long id){
+        return ResponseEntity.ok(new CustomResponse(clientService.findByUserId(id)));
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id){
         return ResponseEntity.ok(new CustomResponse(clientService.deleteById(id)));

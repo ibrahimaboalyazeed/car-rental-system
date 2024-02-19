@@ -32,6 +32,13 @@ public class ClientService {
     public Client findById(Long id) {
         return clientRepo.findById(id).orElseThrow(() -> new CustomException("This Client is not found"));
     }
+    public Client findByUserId(Long id) {
+        Client client =  clientRepo.findByUserId(id);
+        if(client == null){
+            throw new CustomException("This Client is not found");
+        }
+        return client;
+    }
 
     public String deleteById(Long id) {
         findById(id);

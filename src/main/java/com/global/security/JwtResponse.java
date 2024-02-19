@@ -7,6 +7,7 @@ import com.global.entity.Role;
 public class JwtResponse {
 
 	private String token;
+	private Long id;
 	private String email;
 	private String username;
 	private Set<Role> roles;
@@ -16,9 +17,10 @@ public class JwtResponse {
 	
 	
 
-	public JwtResponse(String token, String email, Set<Role> roles, String status) {
+	public JwtResponse(String token, Long id ,String email ,Set<Role> roles, String status) {
 		super();
 		this.token = token;
+		this.id =id;
 		this.email = email;
 		this.roles = roles;
 		this.status = status;
@@ -34,6 +36,14 @@ public class JwtResponse {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getEmail() {

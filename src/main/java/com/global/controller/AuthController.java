@@ -72,7 +72,7 @@ public class AuthController {
 			String token = tokenUtiles.generateToken(email,false);
 
 			return new CustomResponse(
-					new JwtResponse(token, email, user.getRoles(), "Succeefully logged"));
+					new JwtResponse(token, user.getId() ,email, user.getRoles(), "Succeefully logged"));
 		}
 
 		return new CustomResponse("INVALID", HttpStatus.BAD_REQUEST.value());
@@ -94,7 +94,7 @@ public class AuthController {
 		String token = tokenUtiles.generateToken(user.getEmail(), true);
 
 		return new CustomResponse(
-				new JwtResponse(token, user.getEmail(), userNew.getRoles(), "Successfully signed up"));
+				new JwtResponse(token, userNew.getId(),user.getEmail(), userNew.getRoles(), "Successfully signed up"));
 	}
 
 }

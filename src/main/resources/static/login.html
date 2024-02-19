@@ -49,18 +49,18 @@
           <div class="text w-100 text-center mb-md-5 pb-md-5">
             <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
             <div class="login-container">
-              <form id="loginForm" method="post" onsubmit="checkCredentials(event)">
+              <form id="form" method="post" onsubmit="checkCredentials(event)">
                 <div class="form-group">
-                  <label for="username" style="color:black;">Username:</label>
-                  <input type="text" id="username" name="username" required />
+                  <label for="username" style="color:#0ceba5;">Username:</label>
+                  <input type="text" class="form-control" id="username" name="username" required />
                 </div>
                 <div class="form-group">
-                  <label for="password" style="color:black ;">Password:</label>
-                  <input type="password" id="password" name="password" required />
-                  <div id="error-message" class="error-message" style="color:black ;"></div>
+                  <label for="password" style="color:#0ceba5 ;">Password:</label>
+                  <input type="password" class="form-control" id="password" name="password" required />
+                  <div id="error-message" class="error-message" style="color:#0ceba5 ;"></div>
                 </div>
                 <div class="form-group">
-                  <button type="submit" onclick="submitForm()">Login</button>
+                  <button type="submit" class="btn btn-primary">Login</button>
                 </div>
               </form>
               <p class="signup-link">
@@ -73,9 +73,9 @@
     </div>
   </div>
 
-  
 
-  <script src="js/master.js"></script>
+
+
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -90,10 +90,11 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script
+  <!-- <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
+  <script src="js/google-map.js"></script> -->
   <script src="js/main.js"></script>
+  <script src="js/master.js"></script>
 </body>
 
 </html>

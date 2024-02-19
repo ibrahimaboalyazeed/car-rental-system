@@ -52,61 +52,61 @@ public class AppStartup implements CommandLineRunner {
             // Create demo AppUsers with roles
             AppUser appUser = new AppUser();
             appUser.setEmail("osama@gmail.com");
-            appUser.setPassword(passwordEncoder.encode("osama_password"));
+            appUser.setPassword(passwordEncoder.encode("osama"));
             appUser.setEnabled(true);
             appUser.addRole(userRole);
 
             AppUser appUser1 = new AppUser();
             appUser1.setEmail("adel@gmail.com");
-            appUser1.setPassword(passwordEncoder.encode("adel_password"));
+            appUser1.setPassword(passwordEncoder.encode("adel"));
             appUser1.setEnabled(true);
             appUser1.addRole(userRole);
 
             AppUser appUser2 = new AppUser();
             appUser2.setEmail("saeed@gmail.com");
-            appUser2.setPassword(passwordEncoder.encode("saeed_password"));
+            appUser2.setPassword(passwordEncoder.encode("saeed"));
             appUser2.setEnabled(true);
             appUser2.addRole(userRole);
 
             AppUser appUser3 = new AppUser();
             appUser3.setEmail("kareem@gmail.com");
-            appUser3.setPassword(passwordEncoder.encode("kareem_password"));
+            appUser3.setPassword(passwordEncoder.encode("kareem"));
             appUser3.setEnabled(true);
             appUser3.addRole(userRole);
 
             AppUser appUser4 = new AppUser();
             appUser4.setEmail("saad@gmail.com");
-            appUser4.setPassword(passwordEncoder.encode("saad_password"));
+            appUser4.setPassword(passwordEncoder.encode("saad"));
             appUser4.setEnabled(true);
             appUser4.addRole(userRole);
 
             AppUser appUser5 = new AppUser();
             appUser5.setEmail("basem@gmail.com");
-            appUser5.setPassword(passwordEncoder.encode("basem_password"));
+            appUser5.setPassword(passwordEncoder.encode("basem"));
             appUser5.setEnabled(true);
             appUser5.addRole(userRole);
 
             AppUser appUser6 = new AppUser();
             appUser6.setEmail("samir@gmail.com");
-            appUser6.setPassword(passwordEncoder.encode("samir_password"));
+            appUser6.setPassword(passwordEncoder.encode("samir"));
             appUser6.setEnabled(true);
             appUser6.addRole(userRole);
 
             AppUser appUser7 = new AppUser();
             appUser7.setEmail("akram@gmail.com");
-            appUser7.setPassword(passwordEncoder.encode("akram_password"));
+            appUser7.setPassword(passwordEncoder.encode("akram"));
             appUser7.setEnabled(true);
             appUser7.addRole(userRole);
 
             AppUser appUser8 = new AppUser();
             appUser8.setEmail("ramy@gmail.com");
-            appUser8.setPassword(passwordEncoder.encode("ramy_password"));
+            appUser8.setPassword(passwordEncoder.encode("ramy"));
             appUser8.setEnabled(true);
             appUser8.addRole(userRole);
 
             AppUser appUser9 = new AppUser();
             appUser9.setEmail("yousef@gmail.com");
-            appUser9.setPassword(passwordEncoder.encode("yousef_password"));
+            appUser9.setPassword(passwordEncoder.encode("yousef"));
             appUser9.setEnabled(true);
             appUser9.addRole(userRole);
 
@@ -159,7 +159,7 @@ public class AppStartup implements CommandLineRunner {
             client1.setCity("Tala");
             client1.setCountry("Egypt");
             client1.setStreet("Toukh Dalaka");
-            client1.setPhoneNumber("1028369745");
+            client1.setPhoneNumber("01028394667");
             client1.setUser(userService.findById((long) 1));
 
             Client client2 = new Client();
@@ -167,7 +167,7 @@ public class AppStartup implements CommandLineRunner {
             client2.setCity("Tala");
             client2.setCountry("Egypt");
             client2.setStreet("Toukh Dalaka");
-            client2.setPhoneNumber("1024967385");
+            client2.setPhoneNumber("01028394661");
             client2.setUser(userService.findById((long) 2));
 
             Client client3 = new Client();
@@ -175,7 +175,7 @@ public class AppStartup implements CommandLineRunner {
             client3.setCity("Tala");
             client3.setCountry("Egypt");
             client3.setStreet("Toukh Dalaka");
-            client3.setPhoneNumber("1024967385");
+            client3.setPhoneNumber("01028394662");
             client3.setUser(userService.findById((long) 3));
 
             clientService.saveAll(Arrays.asList(client1, client2, client3));
