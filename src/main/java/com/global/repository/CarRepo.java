@@ -13,4 +13,6 @@ public interface CarRepo extends JpaRepository<Car,Long> {
     List<Car> findByMakeIgnoreCase(String make);
 
     List<Car> findByTransmission(Transmission transmission);
+
+    List<Car> findByCategoryId(Long id);
 }

@@ -76,4 +76,8 @@ public class CarService {
     public List<Car> findByTransmission(Transmission transmission) {
         return carRepo.findByTransmission(transmission);
     }
+
+    public List<Car> findFeaturedCars() {
+        return  carRepo.findByCategoryId(5L);
+    }
 }

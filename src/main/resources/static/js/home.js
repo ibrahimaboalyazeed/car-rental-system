@@ -1,6 +1,25 @@
-let profile = sessionStorage.getItem("fullName");
-$("#profile").html(profile);
+$.ajax({
+  type: "GET",
+  url: "",
+  dataType: "json",
+  headers: {
+    Authorization: "Bearer " + document.cookie,
+    Accept: "application/json",
+  },
+  success: function (response) {
+    if (response.status_code == 200) {
 
+    } else if (response.status_code == 404) {
+      // Display the error message in the error-message <div>
+      $("#error-message").text(response.details[0]);
+    }
+  },
+  error: function (error) {
+    console.error("Error:", error);
+    $("#error-message").text("An error occurred during loading.");
+  },
+});
+}
 ////////////////////////////////////////////////////////////////////////
 function bookingForm(event) {
   event.preventDefault();

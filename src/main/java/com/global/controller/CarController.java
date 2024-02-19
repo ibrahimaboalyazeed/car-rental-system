@@ -28,6 +28,10 @@ public class CarController {
 
         return ResponseEntity.ok(new CustomResponse(carService.findAll()));
     }
+    @GetMapping("/featured")
+    public ResponseEntity<?> findFeaturedCars(){
+        return ResponseEntity.ok(new CustomResponse(carService.findFeaturedCars()));
+    }
     @GetMapping("/make")
     public ResponseEntity<?> findByMake(@RequestParam String make){
 

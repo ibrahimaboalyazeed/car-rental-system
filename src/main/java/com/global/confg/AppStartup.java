@@ -229,7 +229,7 @@ public class AppStartup implements CommandLineRunner {
             category4.setName("SUVs");
 
             Category category5 = new Category();
-            category5.setName("People Carrier");
+            category5.setName("Featured car");
 
             Category category6 = new Category();
             category6.setName("Premium car");
@@ -296,7 +296,82 @@ public class AppStartup implements CommandLineRunner {
             car3.setLicence("ش ح ك 4963");
 
 
-            carService.saveAll(Arrays.asList(car1,car2,car3));
+            Car car4 = new Car();
+            car4.setMake("BMW");
+            car4.setModel("Z4M");
+            car4.setModelYear(2024);
+            car4.setCategory(categoryService.findByCategoryName("Featured car"));
+            car4.setOwner(ownerService.findById(1L));
+            car4.setColor("white");
+            car4.setDoors(4);
+            car4.setAvailable(true);
+            car4.setWorkArea("cairo");
+            car4.setLargeBag(1);
+            car4.setSmallBag(1);
+            car4.setTransmission(Transmission.Automatic);
+            car4.setPricePerHour(250);
+            car4.setPricePerDay(3000);
+            car4.setLicence("ش ح ك 4963");
+
+
+            Car car5 = new Car();
+            car5.setMake("Ferrari");
+            car5.setModel("Enzo");
+            car5.setModelYear(2024);
+            car5.setCategory(categoryService.findByCategoryName("Featured car"));
+            car5.setOwner(ownerService.findById(2L));
+            car5.setColor("Blue");
+            car5.setDoors(4);
+            car5.setAvailable(true);
+            car5.setWorkArea("cairo");
+            car5.setLargeBag(1);
+            car5.setSmallBag(1);
+            car5.setTransmission(Transmission.Automatic);
+            car5.setPricePerHour(250);
+            car5.setPricePerDay(2500);
+            car5.setLicence("ش ح ك 4963");
+
+
+            Car car6 = new Car();
+            car6.setMake("Ford");
+            car6.setModel("GT");
+            car6.setModelYear(2024);
+            car6.setCategory(categoryService.findByCategoryName("Featured car"));
+            car6.setOwner(ownerService.findById(3L));
+            car6.setColor("white");
+            car6.setDoors(4);
+            car6.setAvailable(true);
+            car6.setWorkArea("cairo");
+            car6.setLargeBag(1);
+            car6.setSmallBag(1);
+            car6.setTransmission(Transmission.Automatic);
+            car6.setPricePerHour(250);
+            car6.setPricePerDay(2800);
+            car6.setLicence("ش ح ك 4963");
+
+
+            Car car7 = new Car();
+            car7.setMake("Aston");
+            car7.setModel("Martin DB9");
+            car7.setModelYear(2022);
+            car7.setCategory(categoryService.findByCategoryName("Featured car"));
+            car7.setOwner(ownerService.findById(1L));
+            car7.setColor("white");
+            car7.setDoors(4);
+            car7.setAvailable(true);
+            car7.setWorkArea("cairo");
+            car7.setLargeBag(1);
+            car7.setSmallBag(1);
+            car7.setTransmission(Transmission.Automatic);
+            car7.setPricePerHour(250);
+            car7.setPricePerDay(2600);
+            car7.setLicence("ش ح ك 4963");
+
+
+
+
+
+            carService.saveAll(Arrays.asList(car1,car2,car3,car4,car5,car6,car7));
 
 
         }

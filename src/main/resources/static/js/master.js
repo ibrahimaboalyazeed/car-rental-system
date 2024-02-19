@@ -1,3 +1,9 @@
+// sessionStorage.removeItem("userId");
+// sessionStorage.removeItem("clientId");
+// sessionStorage.removeItem("fullName");
+// sessionStorage.removeItem("pick_up_location");
+// sessionStorage.removeItem("startDateTime");
+// sessionStorage.removeItem("endDateTime");
 // check email and password function
 function checkCredentials(event) {
   event.preventDefault();
