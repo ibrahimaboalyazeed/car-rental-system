@@ -36,8 +36,14 @@ public class Car {
     @Column(name = "color")
     private String color;
 
+    @Column(name = "seats")
+    private Integer seats;
+
     @Column(name = "doors")
     private Integer doors;
+
+    @Column(name = "mileage")
+    private Integer mileage;
 
     @Column(name = "number_of_large_bags")
     private Integer largeBag;

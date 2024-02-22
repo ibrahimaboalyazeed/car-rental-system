@@ -32,10 +32,10 @@ public class CarController {
     public ResponseEntity<?> findFeaturedCars(){
         return ResponseEntity.ok(new CustomResponse(carService.findFeaturedCars()));
     }
-    @GetMapping("/make")
-    public ResponseEntity<?> findByMake(@RequestParam String make){
+    @GetMapping("/findCar")
+    public ResponseEntity<?> findByMakeAndModel(@RequestParam String make , @RequestParam String model){
 
-        return ResponseEntity.ok(new CustomResponse(carService.findByMake(make)));
+        return ResponseEntity.ok(new CustomResponse(carService.findByMakeAndModel(make,model)));
     }
     @GetMapping("/transmission")
     public ResponseEntity<?> findByMake(@RequestParam Transmission transmission){

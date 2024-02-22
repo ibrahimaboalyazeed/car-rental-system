@@ -38,7 +38,9 @@ $(document).ready(function () {
 	    						<span class="cat">${car.make}</span>
 	    						<p class="price ml-auto">EGP${car.pricePerDay}<span>/day</span></p>
     						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1 book">Book now</a> <a href="/car-single.html?carId=${
+                  car.id
+                }" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
     				</div>
     			</div>`;
@@ -55,4 +57,19 @@ $(document).ready(function () {
       $("#error-message").text("An error occurred during login.");
     },
   });
+  console.log($("#car-list-container"));
+  let bookBtns1 = document.querySelectorAll(".book");
+
+  console.log(bookBtns1);
+
+  bookBtns1.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      console.log(e.target);
+      e.target.classList.remove("btn-primary");
+      e.target.textContent = "Reserved ✓";
+      e.target.classList.add("btn-danger");
+      e.target.classList.add("text-dark");
+    });
+  });
 });
+////////////////////////////////////////////////////////////////////////////

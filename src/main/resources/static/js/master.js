@@ -36,7 +36,7 @@ function checkCredentials(event) {
             if (response.status_code == 200) {
               sessionStorage.setItem("clientId", response.details.id);
               sessionStorage.setItem("fullName", response.details.fullName);
-              window.location.href = "/index.html";
+               window.location.href = "/index.html";
             } else if (response.status_code == 404) {
               console.log(response);
               $("#error-message").text(response.details[0]);

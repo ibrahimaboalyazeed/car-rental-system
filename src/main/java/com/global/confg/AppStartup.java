@@ -258,6 +258,8 @@ public class AppStartup implements CommandLineRunner {
             car1.setPricePerHour(200);
             car1.setPricePerDay(1200);
             car1.setLicence("ع ن م 1458");
+            car1.setMileage(40000);
+            car1.setSeats(5);
 
 
             Car car2 = new Car();
@@ -276,6 +278,8 @@ public class AppStartup implements CommandLineRunner {
             car2.setPricePerHour(300);
             car2.setPricePerDay(1500);
             car2.setLicence("س ك ا 6842");
+            car2.setMileage(50000);
+            car2.setSeats(4);
 
 
             Car car3 = new Car();
@@ -294,6 +298,8 @@ public class AppStartup implements CommandLineRunner {
             car3.setPricePerHour(250);
             car3.setPricePerDay(1400);
             car3.setLicence("ش ح ك 4963");
+            car3.setMileage(60000);
+            car3.setSeats(4);
 
 
             Car car4 = new Car();
@@ -312,6 +318,8 @@ public class AppStartup implements CommandLineRunner {
             car4.setPricePerHour(250);
             car4.setPricePerDay(3000);
             car4.setLicence("ش ح ك 4963");
+            car4.setMileage(80000);
+            car4.setSeats(5);
 
 
             Car car5 = new Car();
@@ -330,6 +338,8 @@ public class AppStartup implements CommandLineRunner {
             car5.setPricePerHour(250);
             car5.setPricePerDay(2500);
             car5.setLicence("ش ح ك 4963");
+            car5.setMileage(30000);
+            car5.setSeats(4);
 
 
             Car car6 = new Car();
@@ -348,11 +358,13 @@ public class AppStartup implements CommandLineRunner {
             car6.setPricePerHour(250);
             car6.setPricePerDay(2800);
             car6.setLicence("ش ح ك 4963");
+            car6.setMileage(50000);
+            car6.setSeats(5);
 
 
             Car car7 = new Car();
             car7.setMake("Aston");
-            car7.setModel("Martin DB9");
+            car7.setModel("Martin-DB9");
             car7.setModelYear(2022);
             car7.setCategory(categoryService.findByCategoryName("Featured car"));
             car7.setOwner(ownerService.findById(1L));
@@ -366,6 +378,8 @@ public class AppStartup implements CommandLineRunner {
             car7.setPricePerHour(250);
             car7.setPricePerDay(2600);
             car7.setLicence("ش ح ك 4963");
+            car7.setMileage(90000);
+            car7.setSeats(4);
 
 
 

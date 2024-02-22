@@ -69,8 +69,8 @@ public class CarService {
         return carRepo.findByLicence(licence);
     }
 
-    public List<Car> findByMake(String make) {
-        return carRepo.findByMakeIgnoreCase(make);
+    public List<Car> findByMakeAndModel(String make ,String model) {
+        return carRepo.findByMakeAndModelIgnoreCase(make,model);
     }
 
     public List<Car> findByTransmission(Transmission transmission) {

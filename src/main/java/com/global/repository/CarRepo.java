@@ -10,7 +10,7 @@ import java.util.List;
 public interface CarRepo extends JpaRepository<Car,Long> {
     Car findByLicence(String licence);
 
-    List<Car> findByMakeIgnoreCase(String make);
+    List<Car> findByMakeAndModelIgnoreCase(String make,String model);
 
     List<Car> findByTransmission(Transmission transmission);
 
