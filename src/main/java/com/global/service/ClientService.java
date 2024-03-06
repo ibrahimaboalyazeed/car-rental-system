@@ -4,8 +4,10 @@ import com.global.entity.AppUser;
 import com.global.entity.Client;
 import com.global.error.CustomException;
 import com.global.repository.ClientRepo;
+import com.global.security.AppUserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -88,7 +90,24 @@ public class ClientService {
         client = clientRepo.findById(id).orElseThrow(() -> new CustomException("This Client is not found"));
         client.setPhoneNumber(phoneNumber);
         return clientRepo.save(client);
+    }
+    public boolean isOwner(Authentication authentication, Long id) {
 
+        AppUserDetail userDetails = (AppUserDetail) authentication.getPrincipal();
+        Long authenticatedUserId = userDetails.getId();
+        System.out.println("...............>>>  "+authenticatedUserId+"   <<<<<<<<<<<<<...................");
+        Client client =findById(id);
+        Long userId = client.getUser().getId();
+        System.out.println("...............>>>  "+userId+"   <<<<<<<<<<<<<...................");
+        return authenticatedUserId.equals(userId);
+    }
 
+    public boolean isOwnerUsingUserId(Authentication authentication, Long userId) {
+
+        AppUserDetail userDetails = (AppUserDetail) authentication.getPrincipal();
+        Long authenticatedUserId = userDetails.getId();
+        System.out.println("...............>>>  "+authenticatedUserId+"   <<<<<<<<<<<<<...................");
+        System.out.println("...............>>>  "+userId+"   <<<<<<<<<<<<<...................");
+        return authenticatedUserId.equals(userId);
     }
 }

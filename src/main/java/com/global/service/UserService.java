@@ -2,6 +2,7 @@ package com.global.service;
 
 import java.util.*;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -85,7 +86,13 @@ public class UserService implements UserDetailsService {
 		
 		return new AppUserDetail(appUser.get());
 	}
+	   public boolean isOwner(Authentication authentication, Long id) {
 
+		AppUserDetail userDetails = (AppUserDetail) authentication.getPrincipal();
+		Long authenticatedUserId = userDetails.getId();
+
+		return authenticatedUserId.equals(id);
+	}
 
 	
 //	private static List<GrantedAuthority> getAuthorities(AppUser user) {

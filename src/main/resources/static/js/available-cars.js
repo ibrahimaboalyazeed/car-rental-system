@@ -47,6 +47,15 @@ $(document).ready(function () {
           // Update the car-list-container with the generated HTML
           $("#car-list-container").html(carsHtml);
         });
+        let bookBtns1 = document.querySelectorAll(".book");
+        bookBtns1.forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.target.classList.remove("btn-primary");
+            e.target.textContent = "Reserved ✓";
+            e.target.classList.add("btn-danger");
+            e.target.classList.add("text-dark");
+          });
+        });
       } else if (response.status_code == 404) {
         $("#car-list-container").text(response.details[0]);
       }
@@ -56,20 +65,6 @@ $(document).ready(function () {
       // Display a generic error message in case of AJAX failure
       $("#error-message").text("An error occurred during login.");
     },
-  });
-  console.log($("#car-list-container"));
-  let bookBtns1 = document.querySelectorAll(".book");
-
-  console.log(bookBtns1);
-
-  bookBtns1.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      console.log(e.target);
-      e.target.classList.remove("btn-primary");
-      e.target.textContent = "Reserved ✓";
-      e.target.classList.add("btn-danger");
-      e.target.classList.add("text-dark");
-    });
   });
 });
 ////////////////////////////////////////////////////////////////////////////
