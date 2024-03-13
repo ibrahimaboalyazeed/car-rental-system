@@ -16,7 +16,10 @@ providing a convenient and efficient way to access transportation services.
 - Spring Security
 - Spring Data JPA
 - MySQL
+- HTML
+- CSS
 - Bootstrap
+- Javascript
 - jQuery
 
 ## How to Run the Project
