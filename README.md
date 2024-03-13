@@ -11,6 +11,14 @@ providing a convenient and efficient way to access transportation services.
 - Database Integration: Integrated with MySQL database using JPA for efficient data storage and retrieval.
 - Spring Boot Framework: Built using Spring Boot framework for rapid development and easy integration of various components.
 
+## Dependencies
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- MySQL
+- Bootstrap
+- jQuery
+
 ## How to Run the Project
 
 1. ### Clone the Repository:
